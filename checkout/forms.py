@@ -9,26 +9,26 @@ class OrderFrom(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'county',
                   'country',)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            'full_name' : 'Full Name',
+            'email' : 'Email Address',
+            'phone_number' : 'Phone Number',
+            'street_address1' : 'Street Address', 
+            'street_address2' : 'Street Address',
+            'town_or_city' : 'Town or City', 
+            'postcode' : 'Postal Code', 
+            'county' : 'County',
+            'country' : 'Country',
+        }
 
-    super().__init__(*args, **kwargs)
-    placeholders = {
-        'full_name' : 'Full Name',
-        'email' : 'Email Address',
-        'phone_number' : 'Phone Number',
-        'street_address1' : 'Street Address', 
-        'street_address2' : 'Street Address',
-        'town_or_city' : 'Town or City', 
-        'postcode' : 'Postal Code', 
-        'county' : 'County',
-        'country' : 'Country',
-    }
-
-    self.fields['full_name'].widget.attrs['autofocus'] = True
-    for field in self.fields:
-        if self.fields[field].required:
-            placeholder = f'{placeholders[field]} *'
-        else:
-            placeholder = placeholders[field]
-        self.fields[field].widget.attrs['placeholder'] = placeholder
-        self.fields[field].widget.attrs['class'] = 'stripe-style-layout'
-        self.fields[field].label = False
+        self.fields['full_name'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-layout'
+            self.fields[field].label = False
