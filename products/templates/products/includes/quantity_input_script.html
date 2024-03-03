@@ -1,4 +1,26 @@
 <script type="text/javascript">
+    // stop the up and down buttons allowing the quantity to be less than 1 or more than 99
+    function handleEnableDisable(itemId) {
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 98;
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    };
+    // calls the handleEnableDisable function as soon as the page loads on every qty_input class item on the page
+    var allQtyInputs = $('.qty_input');
+    for(var i=0; i < allQtyInputs.length; i++){
+        var itemId = $(allQtyInputs[i]).data('item_id');
+        handleEnableDisable(itemId);
+    };
+
+    // listens to the change event on the class of qty_input and calls the handleEnableDisable 
+    // every time theres a change which has the effect of disabling the built in button when outside of the range we want
+    $('.qty_input').change(function() {
+        var itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+
 
     // window.onload = function() {
     //     if (window.jQuery) {  
@@ -15,6 +37,8 @@
        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
        var currentValue = parseInt($(closestInput).val());
        $(closestInput).val(currentValue + 1);
+       var itemId = $(this).data('item_id');
+       handleEnableDisable(itemId);
     });
     // decrement quantity
     $('.decrement-qty').click(function(e) {
@@ -22,5 +46,7 @@
        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
        var currentValue = parseInt($(closestInput).val());
        $(closestInput).val(currentValue - 1);
+       var itemId = $(this).data('item_id');
+       handleEnableDisable(itemId);
     });
 </script>
