@@ -1,16 +1,26 @@
 <script type="text/javascript">
+
+    // window.onload = function() {
+    //     if (window.jQuery) {  
+    //         // jQuery is loaded  
+    //         alert("jQuery is loaded!");
+    //     } else {
+    //         // jQuery is not loaded
+    //         alert("jQuery is not loaded");
+    //     }
+    // }
     // increment quantity
     $('.increment-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
-    })
+       e.preventDefault();
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+       var currentValue = parseInt($(closestInput).val());
+       $(closestInput).val(currentValue + 1);
+    });
     // decrement quantity
     $('.decrement-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
-    })
+       e.preventDefault();
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+       var currentValue = parseInt($(closestInput).val());
+       $(closestInput).val(currentValue - 1);
+    });
 </script>
