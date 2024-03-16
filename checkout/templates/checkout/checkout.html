@@ -49,7 +49,7 @@
                         <div class="col-2 mb-1">
                             <a href="{% url 'product_detail' item.product.id %}">
                                 {% if item.product.image %}
-                                    <img src="{{ item.product.image }}" alt="{{ product.name }}" class="w-100">
+                                    <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="w-100">
                                 {% else %}
                                     <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="w-100">
                                 {% endif %}
@@ -141,7 +141,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key"}}
-    {{ client_secret|json_script:"id_client_secret"}}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
