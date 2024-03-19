@@ -1,4 +1,4 @@
-Hello {{ order.full_name}}!
+Hello {{ order.full_name }}!
 
 Thank you for your order. This is confirmation for Order at Shopping Site for Order Number: {{ order.order_number}}.
 Full information on your order is below:
