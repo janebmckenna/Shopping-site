@@ -31,7 +31,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 ALLOWED_HOSTS = ['shopping-site-0c1da55eb2d3.herokuapp.com',
                   'localhost',
