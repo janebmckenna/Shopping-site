@@ -24,15 +24,14 @@ import os
 import dj_database_url
 if os.path.exists("env.py"):
     import env
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
-ALLOWED_HOSTS = ['shopping-site-0c1da55eb2d3.herokuapp.com/',
-                #   'shopping-site.herokuapp.com'
+ALLOWED_HOSTS = ['shopping-site-0c1da55eb2d3.herokuapp.com',
                   'localhost',
                   '8000-janebmckenn-shoppingsit-uwzsbox6mu0.ws-eu108.gitpod.io',
                   '8000-janebmckenn-shoppingsit-uwzsbox6mu0.ws-eu110.gitpod.io']
